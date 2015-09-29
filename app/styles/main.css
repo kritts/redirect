@@ -1,0 +1,41 @@
+body {
+    width: 220px;
+    height: 50px;
+}
+
+#topBar { 
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+
+#main {
+    border-bottom: 1px solid #eee;
+    font-weight: bold;
+    margin-right:10px;
+}
+
+a {
+    color: grey; 
+    font-size: 9px; 
+    text-decoration: none;
+}
+
+#inputForm {
+    margin-top: 10px;
+}
+
+#confirmation {
+    padding-bottom: 10px;
+    color: #006400;
+    word-wrap: break-word;
+}
+
+#inputval {
+    float: left;
+    margin-right: 15px;
+}
+
+.textBox {
+    width: 140px;
+    padding-right: 5px;
+}
