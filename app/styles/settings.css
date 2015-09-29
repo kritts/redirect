@@ -1,19 +1,28 @@
 body {   
-    text-align: center;
+  text-align: center;
 }
    
 .heading {
-    border-bottom: 1px solid #eee;
-    font-weight: bold;
-    margin-bottom:10px;
-    font-size: 15pt;
+  border-bottom: 1px solid #eee;
+  font-weight: bold;
+  margin-bottom:10px;
+  font-size: 15pt;
 }
  
 #inputForm {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 #confirmationVal { 
-	color: #006400;
-    word-wrap: break-word;
+  color: #006400;
+  word-wrap: break-word;
+} 
+
+td {
+  padding-left: 10px;
+  padding-right: 10px; 
+}
+
+table { 
+  border: 1px solid #ccc
 }

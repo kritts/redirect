@@ -6,11 +6,12 @@ var currentTab;
 
 var saveData = function() {
     var value = document.getElementById("inputval").value;
-     
-    document.getElementById("confirmation").innerHTML = "Your Redirect was created! <br />" +
-        "<b>" + value + "</b>" + " --> " + currentTab;
-    console.log(value + " --> " + currentTab);
-    localStorage[value] = currentTab; 
+    if(value != undefined &&  value != "" &&  value != " ") {
+	    document.getElementById("confirmation").innerHTML = "Your Redirect was created! <br />" +
+	        "<b>" + value + "</b>" + " --> " + currentTab;
+	    console.log(value + " --> " + currentTab);
+	    localStorage[value] = currentTab; 
+	}
 }
 
 chrome.tabs.getSelected(null, function(tab) {
@@ -23,5 +24,5 @@ var openSettings = function() {
   	});
 }
 
-document.querySelector('#settings').addEventListener('click', openSettings);
 document.querySelector('#submit').addEventListener('click', saveData);
+document.querySelector('#settings').addEventListener('click', openSettings);
