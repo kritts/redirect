@@ -8,8 +8,7 @@ var saveData = function() {
     var value = document.getElementById("inputval").value;
     if(value != undefined &&  value != "" &&  value != " ") {
 	    document.getElementById("confirmation").innerHTML = "Your Redirect was created! <br />" +
-	        "<b>" + value + "</b>" + " --> " + currentTab;
-	    console.log(value + " --> " + currentTab);
+	        "<b>" + value + "</b>" + " --> " + currentTab; 
 	    localStorage[value] = currentTab; 
 	}
 }

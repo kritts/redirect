@@ -18,11 +18,8 @@ chrome.omnibox.onInputEntered.addListener(
   function(text) {
     var urlval = localStorage[text];
     console.log(urlval);
-    if(urlval != undefined) {
-      log.e(" yay");
-      chrome.tabs.update({url: urlval});
-       
+    if(urlval != undefined) { 
+        chrome.tabs.update({ url: urlval});   
     }
   }
 );
-

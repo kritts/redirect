@@ -18,11 +18,21 @@ body {
   word-wrap: break-word;
 } 
 
+.header { 
+	background: lightgray;
+}
+
 td {
   padding-left: 10px;
   padding-right: 10px; 
 }
+ 
 
-table { 
-  border: 1px solid #ccc
+table, th, td {
+    border: 1px solid black;
+     border-collapse: collapse;
+}
+
+table {
+ 	margin-bottom: 30px;
 }
