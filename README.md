@@ -1,5 +1,5 @@
 # redirect
-========
+
 > A Chrome extension that allows users to easily navigate to saved urls.
 
 ## Overview 
