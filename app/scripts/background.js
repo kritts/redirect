@@ -13,11 +13,12 @@ chrome.omnibox.onInputChanged.addListener(
   }
 );
 
-// This event is fired with the user accepts the input in the omnibox.
+// This event is fired when the user accepts the input in the omnibox.
+// It opens the redirect that the user-given key maps to. 
 chrome.omnibox.onInputEntered.addListener(
   function(text) {
     var urlval = localStorage[text];
-    console.log(urlval);
+    console.log("url: " + urlval);
     if(urlval != undefined) { 
         chrome.tabs.update({ url: urlval});   
     }

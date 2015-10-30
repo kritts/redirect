@@ -1,6 +1,6 @@
 {
   "name": "Redirect",
-  "version": "0.0.3",
+  "version": "1.0.1",
   "manifest_version": 2,
   "description": "An extension that allows users to easily navigate to saved urls.",
   "omnibox": {
@@ -21,7 +21,7 @@
       "19": "images/icon-19.png",
       "38": "images/icon-38.png"
     },
-    "default_title": "QuizTab",
+    "default_title": "Redirect",
     "default_popup": "popup.html"
   },
   "permissions": [
