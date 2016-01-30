@@ -7,17 +7,17 @@
 var createRedirect = function() {
   var given_key = document.getElementById("newInput").value;
   var redirect = document.getElementById("url").value;
-  if (redirect.substring(0, 7) == "http://") {
-    // TODO: There may be a better way of doing this
+  if (redirect.substring(0, 7) != "http://" && redirect.substring(0, 8) != "https://") {
+    // TODO: There may be a better way of doing this. Regex?
     redirect = "http://".concat(redirect);  
   }
 
   // TODO: factor out this code
   if(given_key != undefined && given_key != "" && given_key != " ") {
     document.getElementById("confirmationVal").innerHTML = "Your Redirect was created! <br />" +
-      "<b>" + given_key + "</b>" + " --> " + url; 
-    localStorage[given_key] = url; 
-  } 
+      "<b>" + given_key + "</b>" + " --> " + redirect; 
+    localStorage[given_key] = redirect; 
+  }  
 }
 
 // Displays saved redirects in a table.
