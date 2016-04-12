@@ -6,15 +6,16 @@
     </head>
 
     <body>
+        <script src="scripts/common.js"></script>
         <p> <span class="heading"> Create a new Redirect</span> </p>
   
-        <div id="inputForm">
+        <form id="inputForm" action="javascript:createRedirect()" method="">
             <input class="textBox" id="newInput" placeholder="redirect shortcut" type="text" maxlength="30" />
             <input class="textBox" id="url" placeholder="url" type="text" maxlength="30" />
             <button id="new">Create new redirect</button>
-        </div>
+        </form>
 
-       <p id="confirmationVal"></p> 
+       <p id="_confirmation" class="confirmationval"></p> 
  
         <p> <span class="heading">Saved Redirects</span> </p>
         <table align="center" id="mainTables">

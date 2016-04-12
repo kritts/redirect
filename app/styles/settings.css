@@ -13,13 +13,13 @@ body {
   margin-bottom: 20px;
 }
 
-#confirmationVal { 
+.confirmationVal { 
   color: #006400;
   word-wrap: break-word;
 } 
 
 .header { 
-	background: lightgray;
+  background: lightgray;
 }
 
 td {
@@ -33,5 +33,5 @@ table, th, td {
 }
 
 table {
- 	margin-bottom: 30px;
+  margin-bottom: 30px;
 }
