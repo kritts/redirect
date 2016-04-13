@@ -29,3 +29,11 @@ var openSettings = function() {
 
 document.querySelector('#submit').addEventListener('click', saveData);
 document.querySelector('#settings').addEventListener('click', openSettings);
+
+// Focus on the text box for immediate typing. We have to set a timeout because
+// without one the focus change doesn't take. It seems like this is because the
+// popup isn't completely rendered when we're trying to act on it. This 100ms
+// timeout feels instantaneous to the user but lets the page render first.
+setTimeout(function foo() {
+  document.getElementById('inputval').focus();
+}, 100);
