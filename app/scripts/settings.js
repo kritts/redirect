@@ -49,7 +49,7 @@ var populateRedirects = function populateRedirects() {
     for (var key in items) {
       // check hasOwnProperty to make sure it's a key and doesn't come from the
       // prototype
-      if (items.hasOwnProperty(key)) {
+      if (items.hasOwnProperty(key) && !commonFunctions.isPrivateKey(key)) {
         // Creates an empty table row and adds it to the first position of the
         // table
         var row = table.insertRow(-1);
