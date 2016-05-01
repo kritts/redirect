@@ -1,37 +1,43 @@
 body {   
   text-align: center;
+  background-color: #eee;
 }
-   
-.heading {
-  border-bottom: 1px solid #eee;
-  font-weight: bold;
-  margin-bottom:10px;
-  font-size: 15pt;
+  
+h1 { 
+    font-size: 26px
+} 
+
+input { 
+  padding-left: 5px;
+  margin-bottom: 10px;
+}
+
+img { 
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+#content { 
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 20px 40px 30px;
+  margin: 40px auto 0;
+  width: 900px;
+}
+
+.table>tbody>tr>td { 
+  vertical-align: middle; 
+}
+
+.table {
+  width: 90%;
+  table-layout:fixed;
+  word-break: break-all;
 }
  
-#inputForm {
-  margin-bottom: 20px;
-}
 
 .confirmationVal { 
   color: #006400;
   word-wrap: break-word;
-} 
-
-.header { 
-  background: lightgray;
-}
-
-td {
-  padding-left: 10px;
-  padding-right: 10px; 
-}
- 
-table, th, td {
-    border: 1px solid black;
-     border-collapse: collapse;
-}
-
-table {
-  margin-bottom: 30px;
-}
+}  

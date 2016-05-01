@@ -62,9 +62,8 @@ var populateRedirects = function populateRedirects() {
         // Populates the new cells with text and a delete button
         cell1.innerHTML = key;
         cell2.innerHTML = items[key];
-        cell3.innerHTML = "<button id='" +
-          key +
-          "' class='removeElement'>Remove</button>";
+        cell3.innerHTML = "<button id='" + key +
+          "' class='removeElement btn btn-danger btn-sm' >Remove</button>";
       }
     }
     

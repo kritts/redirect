@@ -1,33 +1,37 @@
-body {
-    width: 220px;
-    height: 50px;
-}
-
-#topBar { 
-    margin-bottom: 10px;
-    margin-right: 5px;
-}
-
-#main {
-    border-bottom: 1px solid #eee;
-    font-weight: bold;
-    margin-right:10px;
-}
-
 a {
-    color: grey; 
     font-size: 9px; 
-    text-decoration: none;
 }
 
-#inputForm {
-    margin-top: 10px;
+body {
+    width: 300px;
+    padding: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px
 }
 
+h1 { 
+    font-size: 18px
+}
+
+p {  
+    margin-bottom: 5px;
+}
+ 
 #confirmation {
     padding-bottom: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
     color: #006400;
     word-wrap: break-word;
+}
+
+#confirmMessage {
+    word-wrap: break-word;
+    font-size: 12px;
+}
+
+#formDiv { 
+    padding-bottom: 10px;
 }
 
 #inputval {
@@ -35,7 +39,12 @@ a {
     margin-right: 15px;
 }
 
-.textBox {
-    width: 140px;
-    padding-right: 5px;
+#settings { 
+    color: #11c;
+    font-size: 12px;
 }
+ 
+#settingsID { 
+    text-align: center; 
+}
+ 

@@ -2,29 +2,31 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" 
+        crossorigin="anonymous">
+        <link href="styles/common.css" rel="stylesheet">
         <link href="styles/settings.css" rel="stylesheet">
     </head>
 
     <body>
         <script src="scripts/common.js"></script>
-        <p> <span class="heading"> Create a new Redirect</span> </p>
-  
-        <form id="inputForm" action="javascript:createRedirect()" method="">
-            <input class="textBox" id="newInput" placeholder="redirect shortcut" type="text" maxlength="30" />
-            <input class="textBox" id="url" placeholder="url" type="text" maxlength="30" />
-            <button id="new">Create new redirect</button>
-        </form>
+        <div id="content"> 
+            <h1>Create a new Redirect</h1>
+                
+            <form id="inputForm" action="javascript:createRedirect()" method="">
+                <input class="textBox" id="newInput" placeholder="redirect shortcut" type="text" maxlength="30" />
+                <input class="textBox" id="url" placeholder="url" type="text" maxlength="30" />
+                <button id="new" class="btn btn-primary btn-sm">Create new redirect</button>
+            </form>
 
-       <p id="_confirmation" class="confirmationval"></p> 
- 
-        <p> <span class="heading">Saved Redirects</span> </p>
-        <table align="center" id="mainTables">
-            <tr class="header">
-                <th>Redirect</th>
-                <th>url</th>
-                <th></th> <!--holds the remove button --> 
-            </tr> 
-        </table>
+            <p id="_confirmation" class="confirmationval"></p> 
+     
+            <h1>Saved Redirects</h1>
+            <table align="center" id="mainTables" class="table">
+                <tr class="header"> 
+                </tr> 
+            </table>
+        </div>
 
         <script src="scripts/settings.js"></script>
     </body>

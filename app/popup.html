@@ -2,24 +2,30 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" 
+        crossorigin="anonymous">
+        <link href="styles/common.css" rel="stylesheet">
         <link href="styles/main.css" rel="stylesheet">
     </head>
 
   <body>
         <script src="scripts/common.js"></script>
-        <div id="topBar">
-            <span id='main'>Create a shortcut for this url?</span>
-            <span><a href="#" id="settings">Settings</a></span>
+        <h1 id='heading'>Create a shortcut for this url?</h1>
+   
+        <div id='formDiv'>
+            <form id="inputForm" action="javascript:saveData()" method=""
+              autocomplete="off">
+                <input class="textBox" id="inputval" type="text" maxlength="50"/>
+                <button id="submit" class="btn btn-primary btn-sm">Create</button>
+            </form> 
         </div>
-  
-        <form id="inputForm" action="javascript:saveData()" method=""
-          autocomplete="off">
-            <input class="textBox" id="inputval" type="text" maxlength="50"/>
-            <button id="submit">Create</button>
-        </form>
+        <div id="confirmMessage">
+            <p id="_confirmation"></p> 
+        </div>
  
-       <p id="_confirmation"></p> 
-
+        <div>
+            <p id='settingsID'><a href="#" id="settings">Settings</a></p>
+        </div>
         <script src="scripts/popup.js"></script>
     </body>
 </html>
