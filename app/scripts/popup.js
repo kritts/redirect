@@ -34,7 +34,7 @@ var openSettings = function() {
  * Called after all Redirects are examined. Prints a message if no Redirects
  * are created for the current url.
  */ 
-var showMsg = function showPreviousRedirects(showMsg) { 
+var showMsg = function showMsg(hasKeys) { 
   if (!hasKeys) { 
     var messg = "No Redirects created for this url.";
     document.getElementById('userMessage').innerHTML = messg;
