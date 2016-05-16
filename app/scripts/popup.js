@@ -7,7 +7,6 @@ var currentTab;
 
 var commonFunctions = window.commonFunctions;
 
-
 // Called when a user wants to save a key as a redirect to the currently open tab.
 // If the key is not undefined or empty, it is saved.
 var saveData = function saveData() {
@@ -31,6 +30,45 @@ var openSettings = function() {
   });
 };
 
+/** 
+ * Called after all Redirects are examined. Prints a message if no Redirects
+ * are created for the current url.
+ */ 
+var showMsg = function showPreviousRedirects(showMsg) { 
+  if (!hasKeys) { 
+    var messg = "No Redirects created for this url.";
+    document.getElementById('userMessage').innerHTML = messg;
+  }
+};
+
+/** 
+  * Examines all saved Redirects for the current url and 
+  * displays them in an unordered list. 
+  */
+var checkPreviousRedirects= function checkPreviousRedirects() { 
+  var hasKeys = false;
+  var ul = document.getElementById('currentRedirects');
+
+  chrome.storage.sync.get(null, function(items) {
+    for (var key in items) {
+      // check hasOwnProperty to make sure it's a key and doesn't come from the
+      // prototype
+      if (items.hasOwnProperty(key) && !commonFunctions.isPrivateKey(key)) {
+        if (currentTab === items[key]) {
+          var msg = "Redirects for this url:";
+          document.getElementById('userMessage').innerHTML = msg;
+
+          hasKeys = true;
+          var elem = document.createElement("li");
+          elem.innerHTML = key;
+          ul.appendChild(elem);
+        }
+      }
+    }
+    showMsg(hasKeys);
+  });
+};
+
 document.querySelector('#submit').addEventListener('click', saveData);
 document.querySelector('#settings').addEventListener('click', openSettings);
 
@@ -41,3 +79,8 @@ document.querySelector('#settings').addEventListener('click', openSettings);
 setTimeout(function foo() {
   document.getElementById('inputval').focus();
 }, 100);
+
+// Displays previously created redirects
+window.onload = function() {
+  checkPreviousRedirects();
+}

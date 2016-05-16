@@ -7,7 +7,7 @@ var scoped = function() {
 
   // A string representing the current version. Should be incremented with each
   // release.
-  var VERSION = '1.2.0';
+  var VERSION = '1.2.1';
   // The key in the key value store under which the version is saved. It is
   // important to note the leading underscore, which prevents collisions with
   // user-defined redirects (at least as of alphanumeric checking introduced in
@@ -74,13 +74,14 @@ var scoped = function() {
         // Something went wrong saving.
         pub.setMessage(MSG_SAVE_FAIL + chrome.runtime.lastError);
       } else {
-        pub.setMessage(MSG_SAVE_SUCCESS + key + ' --> ' + value);
+        pub.setMessage(MSG_SAVE_SUCCESS + key + ' → ' + value);
         if (success) {
           // invoke if present
           success();
         }
       }
     });
+    document.getElementById('priors').innerHTML = "";
   };
 
   /**
