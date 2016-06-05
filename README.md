@@ -9,7 +9,7 @@ https://chrome.google.com/webstore/detail/redirect/ndmlefihodnjkipamdighnjjmidda
 [Download it](
 https://chrome.google.com/webstore/detail/redirect/ndmlefihodnjkipamdighnjjmiddafai) it from the Chrome Web Store.
 
-![Redirect Demo](./redirect.gif)
+![Redirect Demo](./demo.gif)
 
 ## Feedback 
 I use Redirect everyday and love it. If you requests for features or any feedback to share, feel free to contact me. 

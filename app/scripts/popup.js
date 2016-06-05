@@ -11,11 +11,15 @@ var commonFunctions = window.commonFunctions;
 // If the key is not undefined or empty, it is saved.
 var saveData = function saveData() {
     var given_key = document.getElementById("inputval").value;
-    if (!commonFunctions.isValidKey(given_key)) {
-      commonFunctions.alertIsInvalidKey();
-      return;
+    if (commonFunctions.keyExists(given_key)) { 
+    
+    } else {
+      if (!commonFunctions.isValidKey(given_key)) {
+        commonFunctions.alertIsInvalidKey();
+        return;
+      }
+      commonFunctions.saveRedirect(given_key, currentTab);
     }
-    commonFunctions.saveRedirect(given_key, currentTab);
 };
 
 // Updates the variable that keeps track of the current tab.
@@ -48,7 +52,7 @@ var showMsg = function showMsg(hasKeys) {
 var checkPreviousRedirects= function checkPreviousRedirects() { 
   var hasKeys = false;
   var ul = document.getElementById('currentRedirects');
-
+  
   chrome.storage.sync.get(null, function(items) {
     for (var key in items) {
       // check hasOwnProperty to make sure it's a key and doesn't come from the
@@ -56,7 +60,7 @@ var checkPreviousRedirects= function checkPreviousRedirects() {
       if (items.hasOwnProperty(key) && !commonFunctions.isPrivateKey(key)) {
         if (currentTab === items[key]) {
           var msg = "Redirects for this url:";
-          document.getElementById('userMessage').innerHTML = msg;
+          document.getElementById('usermessage').innerhtml = msg;
 
           hasKeys = true;
           var elem = document.createElement("li");

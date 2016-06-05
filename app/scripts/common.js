@@ -42,6 +42,12 @@ var scoped = function() {
     pub.setMessage(MSG_BAD_KEY);
   };
 
+  pub.keyExists = function keyExists(key) { 
+      chrome.storage.sync.get(key, function(items) {
+        console.log(items);
+    });
+  };
+
   /**
    * Sets msg to be displayed to the user. If msg is not truthy, does nothing.
    * This uses .innerHTML, permitting styling, but also requiring the caller to
