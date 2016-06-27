@@ -18,7 +18,7 @@ var showReconfirmationMessage = function showReconfirmationMessage(key, value) {
   document.getElementById('formDiv').style.display = 'none';
   document.getElementById('overwriteDiv').style.display = 'inherit';
   var messg = key + ' → ' + value;
-  document.getElementById('msgOverwriteDiv').innerHTML = messg;
+  document.getElementById('msgOverwrite').textContent = messg;
   document.getElementById('inputval').value = key;
 };
 
@@ -27,7 +27,6 @@ var cancel = function cancel() {
   document.getElementById('formDiv').style.display = 'inherit';
   document.getElementById('overwriteDiv').style.display = 'none';
   document.getElementById('confirmMessage').style.display = 'none';
-  showCurrentRedirects();
 };
 
 // Called when a user wants to save a key as a redirect to the currently open tab.
@@ -61,7 +60,7 @@ var openSettings = function() {
 var showMsg = function showMsg(hasKeys) { 
   if (!hasKeys) { 
     var messg = 'No Redirects created for this url.';
-    document.getElementById('userMessage').innerHTML = messg;
+    document.getElementById('userMessage').textContent = messg;
   }
 };
 
@@ -84,12 +83,8 @@ var showCurrentRedirects= function showCurrentRedirects() {
           elem.innerHTML = key;
           ul.appendChild(elem);
          
-          // TODO: doesnt work for some reason!!!!!!! innerhtml is null
           var msg = 'Redirects for this url:';
-          document.getElementById('userMessage').innerhtml = msg;
-          console.log(document.getElementById('userMessage').innerhtml);
-
-
+          document.getElementById('userMessage').textContent = msg;
         }
       }
     } 
