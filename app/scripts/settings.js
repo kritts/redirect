@@ -1,5 +1,5 @@
 /* global document, chrome, window, console */
-'use strict';
+"use strict";
 
 var commonFunctions = window.commonFunctions;
 
@@ -26,10 +26,10 @@ var createRedirect = function() {
 };
 
 var addRemoveListeners = function addRemoveListeners() {
-  var removers = document.getElementsByClassName('removeElement');
+  var removers = document.getElementsByClassName("removeElement");
   for (var i = 0; i < removers.length; i++) {
     var element = removers[i];
-    element.addEventListener('click', function(item) {
+    element.addEventListener("click", function(item) {
       removeRedirect(this);
     });
   }

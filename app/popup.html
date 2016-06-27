@@ -16,9 +16,16 @@
             <form id="inputForm" action="javascript:saveData()" method=""
               autocomplete="off">
                 <input class="textBox" id="inputval" type="text" maxlength="50"/>
-                <button id="submit" class="btn btn-primary btn-sm">Create</button>
+                <button id='submit' class="btn btn-primary btn-sm">Create</button>
             </form> 
         </div>
+        <div id='overwriteDiv' style="display:none">
+          <p id="_overwriteMsg">This redirect already exists. Currently: </p>
+          <p id='msgOverwrite'></p>
+          <button id='overwrite' class="btn btn-primary btn-sm">Overwrite</button>
+          <button id="cancel" class="btn btn-danger btn-sm">Cancel</button>
+        </div>
+
         <div id="confirmMessage">
             <p id="_confirmation"></p> 
         </div>
@@ -28,7 +35,7 @@
           <ul id='currentRedirects'>
           </ul>
         </div>
-        <div>
+        <div id='settingsDiv'>
             <p id='settingsID'><a href="#" id="settings">Settings</a></p>
         </div>
         <script src="scripts/popup.js"></script>

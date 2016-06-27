@@ -7,19 +7,39 @@ var currentTab;
 
 var commonFunctions = window.commonFunctions;
 
+var saveDataGuarantee = function saveDataGuarantee() {
+  document.getElementById('overwriteDiv').style.display = 'none';
+   var key = document.getElementById('inputval').value;
+   commonFunctions.saveRedirect(key, currentTab);
+};
+
+var showReconfirmationMessage = function showReconfirmationMessage(key, value) { 
+  document.getElementById('priors').style.display = 'none';
+  document.getElementById('formDiv').style.display = 'none';
+  document.getElementById('overwriteDiv').style.display = 'inherit';
+  var messg = key + ' → ' + value;
+  document.getElementById('msgOverwriteDiv').innerHTML = messg;
+  document.getElementById('inputval').value = key;
+};
+
+var cancel = function cancel() { 
+  document.getElementById('priors').style.display = 'inherit';
+  document.getElementById('formDiv').style.display = 'inherit';
+  document.getElementById('overwriteDiv').style.display = 'none';
+  document.getElementById('confirmMessage').style.display = 'none';
+  showCurrentRedirects();
+};
+
 // Called when a user wants to save a key as a redirect to the currently open tab.
 // If the key is not undefined or empty, it is saved.
 var saveData = function saveData() {
-    var given_key = document.getElementById("inputval").value;
-    if (commonFunctions.keyExists(given_key)) { 
-    
-    } else {
-      if (!commonFunctions.isValidKey(given_key)) {
-        commonFunctions.alertIsInvalidKey();
-        return;
-      }
-      commonFunctions.saveRedirect(given_key, currentTab);
-    }
+  var key = document.getElementById('inputval').value;
+  if (!commonFunctions.isValidKey(key)) {
+    commonFunctions.alertIsInvalidKey();
+    return;
+  }
+  console.log(key);
+  commonFunctions.checkKeyAndSave(key, currentTab);
 };
 
 // Updates the variable that keeps track of the current tab.
@@ -40,7 +60,7 @@ var openSettings = function() {
  */ 
 var showMsg = function showMsg(hasKeys) { 
   if (!hasKeys) { 
-    var messg = "No Redirects created for this url.";
+    var messg = 'No Redirects created for this url.';
     document.getElementById('userMessage').innerHTML = messg;
   }
 };
@@ -49,7 +69,7 @@ var showMsg = function showMsg(hasKeys) {
   * Examines all saved Redirects for the current url and 
   * displays them in an unordered list. 
   */
-var checkPreviousRedirects= function checkPreviousRedirects() { 
+var showCurrentRedirects= function showCurrentRedirects() { 
   var hasKeys = false;
   var ul = document.getElementById('currentRedirects');
   
@@ -59,22 +79,29 @@ var checkPreviousRedirects= function checkPreviousRedirects() {
       // prototype
       if (items.hasOwnProperty(key) && !commonFunctions.isPrivateKey(key)) {
         if (currentTab === items[key]) {
-          var msg = "Redirects for this url:";
-          document.getElementById('usermessage').innerhtml = msg;
-
           hasKeys = true;
-          var elem = document.createElement("li");
+          var elem = document.createElement('li');
           elem.innerHTML = key;
           ul.appendChild(elem);
+         
+          // TODO: doesnt work for some reason!!!!!!! innerhtml is null
+          var msg = 'Redirects for this url:';
+          document.getElementById('userMessage').innerhtml = msg;
+          console.log(document.getElementById('userMessage').innerhtml);
+
+
         }
       }
-    }
+    } 
     showMsg(hasKeys);
   });
 };
 
+document.querySelector('#overwrite').addEventListener('click', saveDataGuarantee);
 document.querySelector('#submit').addEventListener('click', saveData);
 document.querySelector('#settings').addEventListener('click', openSettings);
+document.querySelector('#cancel').addEventListener('click', cancel);
+
 
 // Focus on the text box for immediate typing. We have to set a timeout because
 // without one the focus change doesn't take. It seems like this is because the
@@ -86,5 +113,5 @@ setTimeout(function foo() {
 
 // Displays previously created redirects
 window.onload = function() {
-  checkPreviousRedirects();
-}
+  showCurrentRedirects();
+};

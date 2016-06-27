@@ -1,6 +1,6 @@
 {
   "name": "Redirect",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "manifest_version": 2,
   "description": "An extension that allows users to easily navigate to saved urls.",
   "omnibox": {

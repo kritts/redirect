@@ -42,10 +42,22 @@ var scoped = function() {
     pub.setMessage(MSG_BAD_KEY);
   };
 
-  pub.keyExists = function keyExists(key) { 
-      chrome.storage.sync.get(key, function(items) {
-        console.log(items);
-    });
+  pub.checkKeyAndSave = function checkKeyAndSave(key, currentTab) { 
+    var exists = false;
+    var value = '';
+    chrome.storage.sync.get(key, function(items) {
+      for (key in items) { 
+         exists = true;
+         value = items[key];
+      }
+      
+      // Ask user to reconfirm their key if it already exists
+      if (exists) { 
+        showReconfirmationMessage(key, value);   
+      } else {
+        pub.saveRedirect(key, currentTab);
+      }
+     });
   };
 
   /**
@@ -72,7 +84,7 @@ var scoped = function() {
    *
    * success is an optional callback called on success
    */
-  pub.saveRedirect = function(key, value, success) {
+  pub.saveRedirect = function saveRedirect(key, value, success) {
     var keyValue = {};
     keyValue[key] = value;
     chrome.storage.sync.set(keyValue, function() {
@@ -87,7 +99,7 @@ var scoped = function() {
         }
       }
     });
-    document.getElementById('priors').innerHTML = "";
+    document.getElementById('priors').innerHTML = '';
   };
 
   /**

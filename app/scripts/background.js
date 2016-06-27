@@ -1,5 +1,5 @@
 /* global chrome, console */
-'use strict';
+"use strict";
 
 // This event is fired each time the user updates the text in the omnibox,
 // as long as the extension's keyword mode is still active.
