@@ -1,35 +1,16 @@
 /* global document, chrome, window, console */
-"use strict";
+'use strict';
 
 var commonFunctions = window.commonFunctions;
 
 // This script contains logic for the settings page. It allows users to 
 // create new directs and delete ones. 
 
-// When the user specifies a key and redirect, it's saved. 
-var createRedirect = function() {
-  var given_key = document.getElementById("newInput").value;
-  var redirect = document.getElementById("url").value;
-
-  if (!commonFunctions.isValidKey(given_key)) {
-    commonFunctions.alertIsInvalidKey();
-    return;
-  }
-
-  // If they didn't include the scheme, we need to include it and will default
-  // to http.
-  if (!/^http[s]?:\/\//.test(redirect)) {
-    redirect = "http://".concat(redirect);  
-  }
-
-  commonFunctions.saveRedirect(given_key, redirect, populateRedirects);
-};
-
 var addRemoveListeners = function addRemoveListeners() {
-  var removers = document.getElementsByClassName("removeElement");
+  var removers = document.getElementsByClassName('removeElement');
   for (var i = 0; i < removers.length; i++) {
     var element = removers[i];
-    element.addEventListener("click", function(item) {
+    element.addEventListener('click', function(item) {
       removeRedirect(this);
     });
   }
@@ -38,7 +19,7 @@ var addRemoveListeners = function addRemoveListeners() {
 var populateRedirects = function populateRedirects() {
   // First remove all existing rows. Important for updating after manually
   // creating a redirect while on the settings page.
-  var table = document.getElementById("mainTables");
+  var table = document.getElementById('mainTables');
   while (table.firstChild) {
     table.removeChild(table.firstChild);
   }
@@ -62,11 +43,11 @@ var populateRedirects = function populateRedirects() {
         // Populates the new cells with text and a delete button
         cell1.innerHTML = key;
         cell2.innerHTML = items[key];
-        cell3.innerHTML = "<button id='" + key +
-          "' class='removeElement btn btn-danger btn-sm' >Remove</button>";
+        cell3.innerHTML = '<button id="' + key +
+          '" class="removeElement btn btn-outline-danger btn-sm" >Remove</button>';
       }
     }
-    
+
     addRemoveListeners();
   });
 };
@@ -79,10 +60,12 @@ window.onload = function() {
 // Removes the key, redirect, and row in the table and refreshes the page so that
 // the table of redirects is updated.
 var removeRedirect = function removeRedirect(button) {  
-    var key = button.id;
-    console.log("Deleting " + button.id); 
-    chrome.storage.sync.remove(button.id);
-    populateRedirects();
+  var key = button.id;
+  console.log('Deleting ' + button.id); 
+  chrome.storage.sync.remove(button.id);
+  populateRedirects();
 };
 
-var button = document.getElementById("new").onclick = createRedirect;
+document.querySelector('#new').addEventListener('click', commonFunctions.createRedirectSettings);
+document.querySelector('#overwrite').addEventListener('click',  commonFunctions.saveDataGuarantee);
+document.querySelector('#cancel').addEventListener('click', commonFunctions.cancel);

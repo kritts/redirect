@@ -1,5 +1,5 @@
 /* global chrome, console */
-"use strict";
+'use strict';
 
 // This event is fired each time the user updates the text in the omnibox,
 // as long as the extension's keyword mode is still active.
@@ -9,12 +9,12 @@ chrome.omnibox.onInputChanged.addListener(function(text, suggest) {
     if (value) {
       // We found something.
       chrome.omnibox.setDefaultSuggestion(
-        {"description" : "Redirecting you to: " + value}
+        {'description' : 'Redirecting you to: ' + value}
       );
     } else {
       // Nothing was found.
       chrome.omnibox.setDefaultSuggestion(
-        {"description" : "No redirect found."}
+        {'description' : 'No redirect found.'}
       );
     }
   });
@@ -25,7 +25,7 @@ chrome.omnibox.onInputChanged.addListener(function(text, suggest) {
 chrome.omnibox.onInputEntered.addListener(function(text) {
   chrome.storage.sync.get(text, function(items) {
     var urlVal = items[text];
-    console.log("url: " + urlVal);
+    console.log('url: ' + urlVal);
     if(urlVal) { 
       chrome.tabs.update({url: urlVal});   
     }

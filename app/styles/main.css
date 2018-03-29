@@ -1,6 +1,20 @@
-#overwriteDiv {
-  text-align: center;
-  padding-bottom: 5px;
+.custom-bullet li {
+  display: block;
+}
+
+.custom-bullet li:before {
+  font-family: 'FontAwesome';
+  content: '\f054';
+  font-size: 9px;
+  float: left;
+  margin-top: 4px;
+  margin-left: -17px;
+  color: #8c8c8c;
+}
+
+ul { 
+  list-style-type: none; 
+  font-size: 14px;
 }
 
 a {
@@ -10,8 +24,6 @@ a {
 body {
     width: 300px;
     padding: 10px;
-    padding-top: 0px;
-    padding-bottom: 0px
 }
 
 h1 { 
@@ -21,18 +33,13 @@ h1 {
 p {  
     margin-bottom: 5px;
 }
- 
-#confirmation {
+
+#_confirmation {
     padding-bottom: 10px;
     padding-left: 2px;
     padding-right: 2px;
-    color: #006400;
     word-wrap: break-word;
-}
-
-#confirmMessage {
-    word-wrap: break-word;
-    font-size: 12px;
+    text-align: center;
 }
 
 #formDiv { 
@@ -44,6 +51,15 @@ p {
     margin-right: 15px;
 }
 
+#msgOverwrite {
+   word-wrap: break-word;
+}
+
+#overwriteDiv {
+  text-align: center;
+  padding-bottom: 5px;
+}
+
 #settings { 
     color: #11c;
     font-size: 12px;
@@ -52,4 +68,3 @@ p {
 #settingsID { 
     text-align: center; 
 }
- 

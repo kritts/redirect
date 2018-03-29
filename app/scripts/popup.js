@@ -7,28 +7,6 @@ var currentTab;
 
 var commonFunctions = window.commonFunctions;
 
-var saveDataGuarantee = function saveDataGuarantee() {
-  document.getElementById('overwriteDiv').style.display = 'none';
-   var key = document.getElementById('inputval').value;
-   commonFunctions.saveRedirect(key, currentTab);
-};
-
-var showReconfirmationMessage = function showReconfirmationMessage(key, value) { 
-  document.getElementById('priors').style.display = 'none';
-  document.getElementById('formDiv').style.display = 'none';
-  document.getElementById('overwriteDiv').style.display = 'inherit';
-  var messg = key + ' → ' + value;
-  document.getElementById('msgOverwrite').textContent = messg;
-  document.getElementById('inputval').value = key;
-};
-
-var cancel = function cancel() { 
-  document.getElementById('priors').style.display = 'inherit';
-  document.getElementById('formDiv').style.display = 'inherit';
-  document.getElementById('overwriteDiv').style.display = 'none';
-  document.getElementById('confirmMessage').style.display = 'none';
-};
-
 // Called when a user wants to save a key as a redirect to the currently open tab.
 // If the key is not undefined or empty, it is saved.
 var saveData = function saveData() {
@@ -43,7 +21,7 @@ var saveData = function saveData() {
 
 // Updates the variable that keeps track of the current tab.
 chrome.tabs.getSelected(null, function(tab) {
-    currentTab = tab.url;
+  currentTab = tab.url;
 });
 
 // Opens the settings page.
@@ -60,18 +38,18 @@ var openSettings = function() {
 var showMsg = function showMsg(hasKeys) { 
   if (!hasKeys) { 
     var messg = 'No Redirects created for this url.';
-    document.getElementById('userMessage').textContent = messg;
+    document.getElementById('_noRedirects').textContent = messg;
   }
 };
 
 /** 
-  * Examines all saved Redirects for the current url and 
-  * displays them in an unordered list. 
-  */
+ * Examines all saved Redirects for the current url and 
+ * displays them in an unordered list. 
+ */
 var showCurrentRedirects= function showCurrentRedirects() { 
   var hasKeys = false;
   var ul = document.getElementById('currentRedirects');
-  
+
   chrome.storage.sync.get(null, function(items) {
     for (var key in items) {
       // check hasOwnProperty to make sure it's a key and doesn't come from the
@@ -81,10 +59,11 @@ var showCurrentRedirects= function showCurrentRedirects() {
           hasKeys = true;
           var elem = document.createElement('li');
           elem.innerHTML = key;
+
           ul.appendChild(elem);
-         
+
           var msg = 'Redirects for this url:';
-          document.getElementById('userMessage').textContent = msg;
+          document.getElementById('_redirectsMsg').textContent = msg;
         }
       }
     } 
@@ -92,10 +71,10 @@ var showCurrentRedirects= function showCurrentRedirects() {
   });
 };
 
-document.querySelector('#overwrite').addEventListener('click', saveDataGuarantee);
 document.querySelector('#submit').addEventListener('click', saveData);
 document.querySelector('#settings').addEventListener('click', openSettings);
-document.querySelector('#cancel').addEventListener('click', cancel);
+document.querySelector('#overwrite').addEventListener('click', commonFunctions.saveDataGuarantee);
+document.querySelector('#cancel').addEventListener('click', commonFunctions.cancel);
 
 
 // Focus on the text box for immediate typing. We have to set a timeout because

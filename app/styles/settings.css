@@ -7,6 +7,10 @@ h1 {
     font-size: 26px
 } 
 
+#savedRedirects {
+  margin-top: 10px;
+}
+
 input { 
   padding-left: 5px;
   margin-bottom: 10px;

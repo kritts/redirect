@@ -1,43 +1,57 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" 
-        crossorigin="anonymous">
-        <link href="styles/common.css" rel="stylesheet">
-        <link href="styles/main.css" rel="stylesheet">
-    </head>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <link href="styles/common.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+  </head>
 
   <body>
-        <script src="scripts/common.js"></script>
-        <h1 id='heading'>Create a shortcut for this url?</h1>
-   
-        <div id='formDiv'>
-            <form id="inputForm" action="javascript:saveData()" method=""
-              autocomplete="off">
-              <input class="textBox" id="inputval" type="text">
-                <button id='submit' class="btn btn-primary btn-sm">Create</button>
-            </form> 
-        </div>
-        <div id='overwriteDiv' style="display:none">
-          <p id="_overwriteMsg">This redirect already exists. Currently: </p>
-          <p id='msgOverwrite'></p>
-          <button id='overwrite' class="btn btn-primary btn-sm">Overwrite</button>
-          <button id="cancel" class="btn btn-danger btn-sm">Cancel</button>
-        </div>
+    <script src="scripts/common.js"></script>
 
-        <div id="confirmMessage">
-            <p id="_confirmation"></p> 
-        </div>
-        <div id='priors'>
-          <p id='userMessage'>
-          </p>
-          <ul id='currentRedirects'>
-          </ul>
-        </div>
-        <div id='settingsDiv'>
-            <p id='settingsID'><a href="#" id="settings">Settings</a></p>
-        </div>
-        <script src="scripts/popup.js"></script>
-    </body>
+    <!-- Input form for a new redirect --> 
+    <h1 id='heading'>Create a shortcut for this url?</h1>
+    <div id='formDiv'>
+      <form id="inputForm" action="javascript:saveData()" method=""
+                                                          autocomplete="off">
+        <input class="textBox" id="inputval" type="text">
+        <button id='submit' class="btn btn-outline-primary btn-sm">Create</button>
+      </form> 
+    </div>
+
+    <!-- --> 
+    <div id="confirmMessage">
+      <p id="_confirmation"></p> 
+    </div>
+
+    <!-- --> 
+    <div>
+      <p id="_noRedirects"></p> 
+    </div>
+
+    <!-- --> 
+    <div id='overwriteDiv' style="display:none">
+      <p id="_overwriteMsg">This Redirect already exists. Currently: </p>
+      <p id='msgOverwrite'></p>
+      <button id='overwrite' class="btn btn-primary btn-sm">Overwrite</button>
+      <button id="cancel" class="btn btn-danger btn-sm">Cancel</button>
+    </div>
+
+    <!-- --> 
+    <div id='priors'>
+      <p id='_redirectsMsg'>
+      </p>
+      <ul id='currentRedirects' class="custom-bullet">
+      </ul>
+    </div>
+
+    <!-- --> 
+    <div id='settingsDiv'>
+      <p id='settingsID'><a href="#" id="settings">Settings</a></p>
+    </div>
+    <script src="scripts/popup.js"></script>
+  </body>
 </html>
