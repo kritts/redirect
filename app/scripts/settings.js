@@ -3,6 +3,9 @@
 
 var commonFunctions = window.commonFunctions;
 
+var nonusableKeys = new Set(["clear", "getItem", "key", "length", 
+                            "removeItem", "setItem"]);
+
 // This script contains logic for the settings page. It allows users to 
 // create new directs and delete ones. 
 
@@ -28,6 +31,11 @@ var populateRedirects = function populateRedirects() {
   // function is invoked with an object full of key->redirect mappings.
   chrome.storage.sync.get(null, function(items) {
     for (var key in items) {
+
+      // quick fix
+      if (nonusableKeys.has(key)) {
+        continue;
+      }
       // check hasOwnProperty to make sure it's a key and doesn't come from the
       // prototype
       if (items.hasOwnProperty(key) && !commonFunctions.isPrivateKey(key)) {
