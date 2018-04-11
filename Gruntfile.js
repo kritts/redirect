@@ -26,6 +26,38 @@ module.exports = function (grunt) {
     // Project settings
     config: config,
 
+    // tests
+    tape: {
+      options: {
+        pretty: true,
+        output: 'console',
+      },
+      files: ['test/*.js'],
+    },
+
+    browserify: {
+      options: {
+        require: [
+          // Make something globally requirable. In this example common is made
+          // available via require('common')
+          './<%= config.app %>/scripts/common:common',
+        ],
+      },
+      popup: {
+        // A single entry point for the app.
+        src: '<%= config.app %>/scripts/popup/popup.js',
+        dest: '<%= config.dist %>/scripts/popupBundle.js'
+      },
+      settings: {
+        src: '<%= config.app %>/scripts/settings.js',
+        dest: '<%= config.dist %>/scripts/settingsBundle.js'
+      },
+      background: {
+        src: '<%= config.app %>/scripts/background.js',
+        dest: '<%= config.dist %>/scripts/backgroundBundle.js'
+      },
+    },
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
@@ -305,9 +337,12 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('test', [
-    'connect:test',
-    'mocha'
+    'tape',
   ]);
+
+
+  grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-tape');
 
   grunt.registerTask('build', [
     'clean:dist',
@@ -320,7 +355,8 @@ module.exports = function (grunt) {
     'uglify',
     'copy',
     'usemin',
-    'compress'
+    'compress',
+    'browserify'
   ]);
 
   grunt.registerTask('default', [

@@ -1,6 +1,11 @@
 {
   "name": "redirect",
   "version": "0.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kritts/redirect.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -15,7 +20,7 @@
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-cssmin": "~0.9.0",
     "grunt-contrib-htmlmin": "~0.2.0",
-    "grunt-contrib-imagemin": "~0.7.1",
+    "grunt-contrib-imagemin": "^0.9.2",
     "grunt-contrib-jshint": "~0.9.2",
     "grunt-contrib-uglify": "~0.4.0",
     "grunt-contrib-watch": "~0.6.1",
